@@ -161,30 +161,30 @@ public class InvseeCommandExecutor implements CommandExecutor {
         //Gracefully handle failure and faults.
         fut.whenComplete((response, throwable) -> {
             if (throwable != null) {
-                player.sendMessage(ChatColor.RED + "An error occurred while trying to open " + playerNameOrUUID + "'s inventory.");
-                plugin.getLogger().log(Level.SEVERE, "Error while trying to create main-inventory spectator inventory", throwable);
+                player.sendMessage(ChatColor.RED + "Произошла ошибка при попытке открыть инвентарь игрока " + playerNameOrUUID + ".");
+                plugin.getLogger().log(Level.SEVERE, "Ошибка при создании инвентаря наблюдателя", throwable);
             } else {
                 if (!response.isOpen()) {
                     NotOpenedReason notOpenedReason = response.getReason();
                     if (notOpenedReason instanceof InventoryOpenEventCancelled) {
-                        player.sendMessage(ChatColor.RED + "Another plugin prevented you from spectating " + playerNameOrUUID + "'s inventory");
+                        player.sendMessage(ChatColor.RED + "Другой плагин запретил вам наблюдать за инвентарем игрока " + playerNameOrUUID);
                     } else if (notOpenedReason instanceof InventoryNotCreated) {
                         NotCreatedReason notCreatedReason = ((InventoryNotCreated) notOpenedReason).getNotCreatedReason();
                         if (notCreatedReason instanceof TargetDoesNotExist) {
-                            player.sendMessage(ChatColor.RED + "Player " + playerNameOrUUID + " does not exist.");
+                            player.sendMessage(ChatColor.RED + "Игрок " + playerNameOrUUID + " не найден.");
                         } else if (notCreatedReason instanceof UnknownTarget) {
-                            player.sendMessage(ChatColor.RED + "Player " + playerNameOrUUID + " has not logged onto the server yet.");
+                            player.sendMessage(ChatColor.RED + "Игрок " + playerNameOrUUID + " не найден.");
                         }  else if (notCreatedReason instanceof TargetHasExemptPermission) {
-                            player.sendMessage(ChatColor.RED + "Player " + playerNameOrUUID + " is exempted from being spectated.");
+                            player.sendMessage(ChatColor.RED + "Игрок " + playerNameOrUUID + " защищён от просмотра.");
                         } else if (notCreatedReason instanceof ImplementationFault) {
-                            player.sendMessage(ChatColor.RED + "An internal fault occurred when trying to load " + playerNameOrUUID + "'s inventory.");
+                            player.sendMessage(ChatColor.RED + "Произошел внутренний сбой при загрузке инвентаря игрока " + playerNameOrUUID + ".");
                         } else if (notCreatedReason instanceof OfflineSupportDisabled) {
-                            player.sendMessage(ChatColor.RED + "Spectating offline players' inventories is disabled.");
+                            player.sendMessage(ChatColor.RED + "Игрок не найден.");
                         } else {
-                            player.sendMessage(ChatColor.RED + "Could not create " + playerNameOrUUID + "'s inventory for an unknown reason.");
+                            player.sendMessage(ChatColor.RED + "Не удалось создать инвентарь игрока " + playerNameOrUUID + " по неизвестной причине.");
                         }
                     } else {
-                        player.sendMessage(ChatColor.RED + "Could not open " + playerNameOrUUID + "'s inventory for an unknown reason.");
+                        player.sendMessage(ChatColor.RED + "Не удалось открыть инвентарь игрока " + playerNameOrUUID + " по неизвестной причине.");
                     }
                 } //else: it opened successfully: nothing to do there!
             }
