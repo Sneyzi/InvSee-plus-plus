@@ -32,6 +32,7 @@ class SetupImpl implements Setup {
 
     static SupportedServerSoftware<SetupProvider> SUPPORTED = new SupportedServerSoftware<>();
     static {
+        /*
         SUPPORTED.registerSupportedVersion(ServerSoftware.CRAFTBUKKIT_1_8_8, () -> new Impl_1_8_8());
         SUPPORTED.registerSupportedVersion(ServerSoftware.CRAFTBUKKIT_1_12_2, () -> new Impl_1_12_2());
         SUPPORTED.registerSupportedVersion(ServerSoftware.CRAFTBUKKIT_1_16_5, () -> new Impl_1_16_5());
@@ -44,6 +45,7 @@ class SetupImpl implements Setup {
         SUPPORTED.registerSupportedVersion(() -> new Impl_1_21(), new ServerSoftware(MinecraftPlatform.CRAFTBUKKIT, MinecraftVersion._1_21), new ServerSoftware(MinecraftPlatform.PAPER, MinecraftVersion._1_21));
         SUPPORTED.registerSupportedVersion(() -> new Impl_1_21_1(), ServerSoftware.CRAFTBUKKIT_1_21_1, new ServerSoftware(MinecraftPlatform.PAPER, MinecraftVersion._1_21_1));
         SUPPORTED.registerSupportedVersion(() -> new Impl_1_21_3(), ServerSoftware.CRAFTBUKKIT_1_21_3, new ServerSoftware(MinecraftPlatform.PAPER, MinecraftVersion._1_21_3));
+        */
         SUPPORTED.registerSupportedVersion(() -> new Impl_1_21_4(), ServerSoftware.CRAFTBUKKIT_1_21_4, new ServerSoftware(MinecraftPlatform.PAPER, MinecraftVersion._1_21_4));
         SUPPORTED.registerSupportedVersion(() -> new Impl_1_21_5(), ServerSoftware.CRAFTBUKKIT_1_21_5, new ServerSoftware(MinecraftPlatform.PAPER, MinecraftVersion._1_21_5));
         final SetupProvider glowstoneProver = () -> new Impl_Glowstone();
@@ -76,7 +78,7 @@ class Impl_1_21_4 extends SetupImpl {
         super(com.janboerman.invsee.spigot.addon.give.impl_1_21_4_R3.GiveImpl.INSTANCE);
     }
 }
-
+/*
 class Impl_1_21_3 extends SetupImpl {
     Impl_1_21_3() {
         super(com.janboerman.invsee.spigot.addon.give.impl_1_21_3_R2.GiveImpl.INSTANCE);
@@ -149,6 +151,7 @@ class Impl_1_8_8 extends SetupImpl {
         super(com.janboerman.invsee.spigot.addon.give.impl_1_8_R3.GiveImpl.INSTANCE);
     }
 }
+*/
 
 class Impl_Glowstone extends SetupImpl {
     Impl_Glowstone() {

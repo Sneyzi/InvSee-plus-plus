@@ -44,7 +44,7 @@ public interface Setup {
 
 //we use separate classes per implementation, to prevent classloading of an incorrect version.
 //previously, the Setup#setup(Plugin) method tried to load all implementation classes, even before any of them was needed.
-
+/*
 class Impl_1_8_8 extends SetupImpl {
     Impl_1_8_8(Plugin plugin, NamesAndUUIDs lookup, Scheduler scheduler, OpenSpectatorsCache cache) {
         super(new com.janboerman.invsee.spigot.impl_1_8_R3.InvseeImpl(plugin, lookup, scheduler, cache), new com.janboerman.invsee.spigot.impl_1_8_R3.KnownPlayersProvider(plugin, scheduler));
@@ -118,6 +118,7 @@ class Impl_1_21_3 extends SetupImpl {
         super(new com.janboerman.invsee.spigot.impl_1_21_3_R2.InvseeImpl(plugin, lookup, scheduler, cache), new com.janboerman.invsee.spigot.impl_1_21_3_R2.KnownPlayersProvider(plugin, scheduler));
     }
 }
+*/
 
 class Impl_1_21_4 extends SetupImpl {
     Impl_1_21_4(Plugin plugin, NamesAndUUIDs lookup, Scheduler scheduler, OpenSpectatorsCache cache) {
@@ -143,6 +144,7 @@ class SetupImpl implements Setup {
 
     static SupportedServerSoftware<SetupProvider> SUPPORTED = new SupportedServerSoftware<>();
     static {
+        /*
         SUPPORTED.registerSupportedVersion(ServerSoftware.CRAFTBUKKIT_1_8_8, (p, l, s, c) -> new Impl_1_8_8(p, l, s, c));
         SUPPORTED.registerSupportedVersion(ServerSoftware.CRAFTBUKKIT_1_12_2, (p, l, s, c) -> new Impl_1_12_2(p, l, s, c));
         SUPPORTED.registerSupportedVersion(ServerSoftware.CRAFTBUKKIT_1_16_5, (p, l, s, c) -> new Impl_1_16_5(p, l, s, c));
@@ -155,6 +157,7 @@ class SetupImpl implements Setup {
         SUPPORTED.registerSupportedVersion((p, l, s, c) -> new Impl_1_21(p, l, s, c), new ServerSoftware(MinecraftPlatform.CRAFTBUKKIT, MinecraftVersion._1_21), new ServerSoftware(MinecraftPlatform.PAPER, MinecraftVersion._1_21));
         SUPPORTED.registerSupportedVersion((p, l, s, c) -> new Impl_1_21_1(p, l, s, c), ServerSoftware.CRAFTBUKKIT_1_21_1, new ServerSoftware(MinecraftPlatform.PAPER, MinecraftVersion._1_21_1));
         SUPPORTED.registerSupportedVersion((p, l, s, c) -> new Impl_1_21_3(p, l, s, c), ServerSoftware.CRAFTBUKKIT_1_21_3, new ServerSoftware(MinecraftPlatform.PAPER, MinecraftVersion._1_21_3));
+        */
         SUPPORTED.registerSupportedVersion((p, l, s, c) -> new Impl_1_21_4(p, l, s, c), ServerSoftware.CRAFTBUKKIT_1_21_4, new ServerSoftware(MinecraftPlatform.PAPER, MinecraftVersion._1_21_4));
         SUPPORTED.registerSupportedVersion((p, l, s, c) -> new Impl_1_21_5(p, l, s, c), ServerSoftware.CRAFTBUKKIT_1_21_5, new ServerSoftware(MinecraftPlatform.PAPER, MinecraftVersion._1_21_5));
 
