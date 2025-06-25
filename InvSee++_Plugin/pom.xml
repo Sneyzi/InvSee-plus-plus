@@ -15,7 +15,7 @@
 
     <build>
         <defaultGoal>clean package</defaultGoal>
-        <finalName>InvSee++</finalName>
+        <finalName>InvSee++-modified</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
